@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "74685318321",
+    "project_id": "cchqhackathongk",
+    "storage_bucket": "cchqhackathongk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:74685318321:android:f2d5c3c6462cb98c49ce90",
+        "android_client_info": {
+          "package_name": "com.gkcrowdcontrol.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "74685318321-cja5abp532dboci782dqqjo56mobgo4f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2yvwSh4yFqqzDRwgklYAsOCqQGfQfXbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "74685318321-cja5abp532dboci782dqqjo56mobgo4f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

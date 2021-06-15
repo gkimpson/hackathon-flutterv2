@@ -1,4 +1,4 @@
-package com.souvikbiswas.flutterfire_samples
+package com.gkcrowdcontrol.app
 
 import io.flutter.embedding.android.FlutterActivity
 

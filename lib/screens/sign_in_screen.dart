@@ -66,7 +66,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       SizedBox(height: 20),
                       Text(
-                        'FlutterFire',
+                        'CCHQ',
                         style: TextStyle(
                           color: CustomColors.firebaseYellow,
                           fontSize: 40,
