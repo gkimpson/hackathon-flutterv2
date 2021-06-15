@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterfire_samples/res/custom_colors.dart';
 import 'package:flutterfire_samples/screens/user_info_screen.dart';
 import 'package:flutterfire_samples/widgets/sign_in_form.dart';
+import 'package:local_auth/local_auth.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -13,6 +14,41 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   final FocusNode _emailFocusNode = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();
+  final LocalAuthentication _localAuthentication = LocalAuthentication();
+  String _message = "";
+
+  Future<bool> checkingForBioMetrics() async {
+    bool canCheckBiometrics = await _localAuthentication.canCheckBiometrics;
+    print(canCheckBiometrics);
+    return canCheckBiometrics;
+  }
+
+  Future<void> _authenticateMe() async {
+// this method opens a dialog for fingerprint authentication.
+// we do not need to create a dialog nut it popsup from device natively.
+    bool authenticated = false;
+    try {
+      authenticated = await _localAuthentication.authenticate(
+        localizedReason: "Authenticate for Testing", // message for dialog
+        useErrorDialogs: true, // show error in dialog
+        stickyAuth: true, // native process
+      );
+      setState(() {
+        _message = authenticated ? "Authorized" : "Not Authorized";
+      });
+    } catch (e) {
+      print(e);
+    }
+    if (!mounted) return;
+  }
+
+  @override
+  void initState() {
+// TODO: implement initState
+    checkingForBioMetrics();
+    _authenticateMe();
+    super.initState();
+  }
 
   Future<FirebaseApp> _initializeFirebase() async {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
@@ -73,7 +109,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ),
                       Text(
-                        'Authentication',
+                        "$_message",
                         style: TextStyle(
                           color: CustomColors.firebaseOrange,
                           fontSize: 40,
